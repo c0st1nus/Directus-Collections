@@ -9,7 +9,10 @@
   },
   "dependencies": {
     "@directus/sdk": "19.0.1",
-    "express": "5.0.1"
+    "axios": "^1.8.3",
+    "express": "5.0.1",
+    "node-fetch": "^3.3.2",
+    "uuid": "^11.1.0"
   },
   "keywords": [],
   "author": "",
