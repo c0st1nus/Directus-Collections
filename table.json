@@ -1,0 +1,1895 @@
+{
+  "main": {
+    "table": {
+      "collection": null,
+      "meta": {
+        "collection": null,
+        "icon": "assignment",
+        "note": null,
+        "display_template": "{{ header }}",
+        "hidden": false,
+        "singleton": false,
+        "translations": [
+          {
+            "language": "en-US",
+            "translation": "Project "
+          },
+          {
+            "language": "ru-RU",
+            "translation": "Проект "
+          }
+        ],
+        "archive_field": null,
+        "archive_value": null,
+        "unarchive_value": null,
+        "archive_app_filter": true,
+        "sort_field": null,
+        "item_duplication_fields": null,
+        "sort": 1,
+        "accountability": "all",
+        "group": "projects",
+        "collapse": "open",
+        "preview_url": null,
+        "versioning": false
+      },
+      "schema": {
+        "name": null,
+        "comment": null
+      },
+      "fields": [
+        {
+          "field": "id",
+          "type": "uuid",
+          "schema": {
+            "name": "id",
+            "data_type": "char",
+            "default_value": null,
+            "max_length": 36,
+            "numeric_precision": null,
+            "numeric_scale": null,
+            "is_generated": false,
+            "generation_expression": null,
+            "is_nullable": false,
+            "is_unique": true,
+            "is_indexed": false,
+            "is_primary_key": true,
+            "has_auto_increment": false,
+            "foreign_key_column": null,
+            "foreign_key_table": null
+          },
+          "meta": {
+            "field": "id",
+            "special": ["uuid"],
+            "interface": "input",
+            "options": null,
+            "display": null,
+            "display_options": null,
+            "readonly": true,
+            "hidden": true,
+            "sort": 1,
+            "width": "full",
+            "translations": [
+              {
+                "language": "en-US",
+                "translation": "ID"
+              },
+              {
+                "language": "ru-RU",
+                "translation": "ID"
+              }
+            ],
+            "note": null,
+            "conditions": null,
+            "required": false,
+            "group": null,
+            "validation": null,
+            "validation_message": null
+          }
+        },
+        {
+          "field": "status",
+          "type": "string",
+          "schema": {
+            "name": "status",
+            "data_type": "varchar",
+            "default_value": "new",
+            "max_length": 255,
+            "numeric_precision": null,
+            "numeric_scale": null,
+            "is_generated": false,
+            "generation_expression": null,
+            "is_nullable": false,
+            "is_unique": false,
+            "is_indexed": false,
+            "is_primary_key": false,
+            "has_auto_increment": false,
+            "foreign_key_column": null,
+            "foreign_key_table": null
+          },
+          "meta": {
+            "field": "status",
+            "special": null,
+            "interface": "select-dropdown",
+            "options": {
+              "choices": [
+                {
+                  "text": "$t:new_proj",
+                  "value": "new"
+                },
+                {
+                  "text": "$t:development",
+                  "value": "dev"
+                },
+                {
+                  "text": "$t:demo",
+                  "value": "demo"
+                },
+                {
+                  "text": "$t:corrections",
+                  "value": "corrects"
+                },
+                {
+                  "text": "$t:submittion",
+                  "value": "submittion"
+                },
+                {
+                  "text": "$t:analysis",
+                  "value": "analysis"
+                },
+                {
+                  "text": "$t:archive",
+                  "value": "archive"
+                }
+              ]
+            },
+            "display": "labels",
+            "display_options": {
+              "showAsDot": true,
+              "choices": [
+                {
+                  "text": "$t:new_deal",
+                  "value": "new"
+                },
+                {
+                  "text": "$t:development",
+                  "value": "dev"
+                },
+                {
+                  "text": "$t:demo",
+                  "value": "demo"
+                },
+                {
+                  "text": "$t:corrections",
+                  "value": "corrections"
+                },
+                {
+                  "text": "$t:submittion",
+                  "value": "submittion"
+                },
+                {
+                  "text": "$t:analysis",
+                  "value": "analysis"
+                },
+                {
+                  "text": "$t:archive",
+                  "value": "archive"
+                }
+              ]
+            },
+            "readonly": false,
+            "hidden": false,
+            "sort": 2,
+            "width": "full",
+            "translations": [
+              {
+                "language": "en-US",
+                "translation": "Status"
+              },
+              {
+                "language": "ru-RU",
+                "translation": "Статус"
+              }
+            ],
+            "note": null,
+            "conditions": null,
+            "required": false,
+            "group": null,
+            "validation": null,
+            "validation_message": null
+          }
+        },
+        {
+          "field": "created_by",
+          "type": "string",
+          "schema": {
+            "name": "created_by",
+            "data_type": "char",
+            "default_value": null,
+            "max_length": 36,
+            "numeric_precision": null,
+            "numeric_scale": null,
+            "is_generated": false,
+            "generation_expression": null,
+            "is_nullable": true,
+            "is_unique": false,
+            "is_indexed": false,
+            "is_primary_key": false,
+            "has_auto_increment": false,
+            "foreign_key_column": "id",
+            "foreign_key_table": "directus_users"
+          },
+          "meta": {
+            "field": "created_by",
+            "special": ["user-created"],
+            "interface": "select-dropdown-m2o",
+            "options": {
+              "template": "{{avatar}} {{first_name}} {{last_name}}"
+            },
+            "display": "user",
+            "display_options": null,
+            "readonly": true,
+            "hidden": true,
+            "sort": 3,
+            "width": "half",
+            "translations": [
+              {
+                "language": "en-US",
+                "translation": "Created By"
+              },
+              {
+                "language": "ru-RU",
+                "translation": "Кто создал"
+              }
+            ],
+            "note": null,
+            "conditions": null,
+            "required": false,
+            "group": null,
+            "validation": null,
+            "validation_message": null
+          }
+        },
+        {
+          "field": "created_at",
+          "type": "timestamp",
+          "schema": {
+            "name": "created_at",
+            "data_type": "datetime",
+            "default_value": null,
+            "max_length": null,
+            "numeric_precision": null,
+            "numeric_scale": null,
+            "is_generated": false,
+            "generation_expression": null,
+            "is_nullable": true,
+            "is_unique": false,
+            "is_indexed": false,
+            "is_primary_key": false,
+            "has_auto_increment": false,
+            "foreign_key_column": null,
+            "foreign_key_table": null
+          },
+          "meta": {
+            "field": "created_at",
+            "special": ["date-created", "cast-timestamp"],
+            "interface": "datetime",
+            "options": null,
+            "display": "datetime",
+            "display_options": {
+              "relative": true
+            },
+            "readonly": true,
+            "hidden": true,
+            "sort": 4,
+            "width": "half",
+            "translations": [
+              {
+                "language": "en-US",
+                "translation": "Created at"
+              },
+              {
+                "language": "ru-RU",
+                "translation": "Создано в"
+              }
+            ],
+            "note": null,
+            "conditions": null,
+            "required": false,
+            "group": null,
+            "validation": null,
+            "validation_message": null
+          }
+        },
+        {
+          "field": "updated_by",
+          "type": "string",
+          "schema": {
+            "name": "updated_by",
+            "data_type": "char",
+            "default_value": null,
+            "max_length": 36,
+            "numeric_precision": null,
+            "numeric_scale": null,
+            "is_generated": false,
+            "generation_expression": null,
+            "is_nullable": true,
+            "is_unique": false,
+            "is_indexed": false,
+            "is_primary_key": false,
+            "has_auto_increment": false,
+            "foreign_key_column": "id",
+            "foreign_key_table": "directus_users"
+          },
+          "meta": {
+            "field": "updated_by",
+            "special": ["user-updated"],
+            "interface": "select-dropdown-m2o",
+            "options": {
+              "template": "{{avatar}} {{first_name}} {{last_name}}"
+            },
+            "display": "user",
+            "display_options": null,
+            "readonly": true,
+            "hidden": true,
+            "sort": 5,
+            "width": "half",
+            "translations": [
+              {
+                "language": "en-US",
+                "translation": "Updated By"
+              },
+              {
+                "language": "ru-RU",
+                "translation": "Кто обновил"
+              }
+            ],
+            "note": null,
+            "conditions": null,
+            "required": false,
+            "group": null,
+            "validation": null,
+            "validation_message": null
+          }
+        },
+        {
+          "field": "updated_at",
+          "type": "timestamp",
+          "schema": {
+            "name": "updated_at",
+            "data_type": "datetime",
+            "default_value": null,
+            "max_length": null,
+            "numeric_precision": null,
+            "numeric_scale": null,
+            "is_generated": false,
+            "generation_expression": null,
+            "is_nullable": true,
+            "is_unique": false,
+            "is_indexed": false,
+            "is_primary_key": false,
+            "has_auto_increment": false,
+            "foreign_key_column": null,
+            "foreign_key_table": null
+          },
+          "meta": {
+            "field": "updated_at",
+            "special": ["date-updated", "cast-timestamp"],
+            "interface": "datetime",
+            "options": null,
+            "display": "datetime",
+            "display_options": {
+              "relative": true
+            },
+            "readonly": true,
+            "hidden": true,
+            "sort": 6,
+            "width": "half",
+            "translations": [
+              {
+                "language": "en-US",
+                "translation": "Updated at"
+              },
+              {
+                "language": "ru-RU",
+                "translation": "Обновлено в"
+              }
+            ],
+            "note": null,
+            "conditions": null,
+            "required": false,
+            "group": null,
+            "validation": null,
+            "validation_message": null
+          }
+        },
+        {
+          "field": "header",
+          "type": "string",
+          "schema": {
+            "name": "header",
+            "data_type": "varchar",
+            "default_value": null,
+            "max_length": 255,
+            "numeric_precision": null,
+            "numeric_scale": null,
+            "is_generated": false,
+            "generation_expression": null,
+            "is_nullable": true,
+            "is_unique": false,
+            "is_indexed": false,
+            "is_primary_key": false,
+            "has_auto_increment": false,
+            "foreign_key_column": null,
+            "foreign_key_table": null
+          },
+          "meta": {
+            "field": "header",
+            "special": null,
+            "interface": "input",
+            "options": null,
+            "display": null,
+            "display_options": null,
+            "readonly": false,
+            "hidden": false,
+            "sort": 7,
+            "width": "full",
+            "translations": [
+              {
+                "language": "en-US",
+                "translation": "Header"
+              },
+              {
+                "language": "ru-RU",
+                "translation": "Заголовок"
+              }
+            ],
+            "note": null,
+            "conditions": null,
+            "required": false,
+            "group": null,
+            "validation": null,
+            "validation_message": null
+          }
+        },
+        {
+          "field": "additional_points",
+          "type": "json",
+          "schema": {
+            "name": "additional_points",
+            "data_type": "json",
+            "default_value": null,
+            "max_length": null,
+            "numeric_precision": null,
+            "numeric_scale": null,
+            "is_generated": false,
+            "generation_expression": null,
+            "is_nullable": true,
+            "is_unique": false,
+            "is_indexed": false,
+            "is_primary_key": false,
+            "has_auto_increment": false,
+            "foreign_key_column": null,
+            "foreign_key_table": null
+          },
+          "meta": {
+            "field": "additional_points",
+            "special": ["cast-json"],
+            "interface": "select-multiple-checkbox",
+            "options": {
+              "allowOther": true
+            },
+            "display": null,
+            "display_options": null,
+            "readonly": false,
+            "hidden": false,
+            "sort": 12,
+            "width": "full",
+            "translations": [
+              {
+                "language": "en-US",
+                "translation": "Additional Points"
+              },
+              {
+                "language": "ru-RU",
+                "translation": "Дополнительные параметры"
+              }
+            ],
+            "note": null,
+            "conditions": null,
+            "required": false,
+            "group": null,
+            "validation": null,
+            "validation_message": null
+          }
+        },
+        {
+          "field": "notes",
+          "type": "text",
+          "schema": {
+            "name": "notes",
+            "data_type": "text",
+            "default_value": null,
+            "max_length": null,
+            "numeric_precision": null,
+            "numeric_scale": null,
+            "is_generated": false,
+            "generation_expression": null,
+            "is_nullable": true,
+            "is_unique": false,
+            "is_indexed": false,
+            "is_primary_key": false,
+            "has_auto_increment": false,
+            "foreign_key_column": null,
+            "foreign_key_table": null
+          },
+          "meta": {
+            "field": "notes",
+            "special": null,
+            "interface": "input-multiline",
+            "options": null,
+            "display": null,
+            "display_options": null,
+            "readonly": false,
+            "hidden": false,
+            "sort": 9,
+            "width": "full",
+            "translations": [
+              {
+                "language": "en-US",
+                "translation": "Notes"
+              },
+              {
+                "language": "ru-RU",
+                "translation": "Комментарии"
+              }
+            ],
+            "note": null,
+            "conditions": null,
+            "required": false,
+            "group": null,
+            "validation": null,
+            "validation_message": null
+          }
+        },
+        {
+          "field": "deal",
+          "type": "string",
+          "schema": {
+            "name": "deal",
+            "data_type": "char",
+            "default_value": null,
+            "max_length": 36,
+            "numeric_precision": null,
+            "numeric_scale": null,
+            "is_generated": false,
+            "generation_expression": null,
+            "is_nullable": true,
+            "is_unique": false,
+            "is_indexed": false,
+            "is_primary_key": false,
+            "has_auto_increment": false,
+            "foreign_key_column": "id",
+            "foreign_key_table": "deals"
+          },
+          "meta": {
+            "field": "deal",
+            "special": ["m2o"],
+            "interface": "select-dropdown-m2o",
+            "options": {
+              "template": "{{header}}",
+              "enableCreate": false
+            },
+            "display": null,
+            "display_options": null,
+            "readonly": false,
+            "hidden": false,
+            "sort": 15,
+            "width": "full",
+            "translations": [
+              {
+                "language": "en-US",
+                "translation": "Deal"
+              },
+              {
+                "language": "ru-RU",
+                "translation": "Сделка"
+              }
+            ],
+            "note": null,
+            "conditions": null,
+            "required": false,
+            "group": null,
+            "validation": null,
+            "validation_message": null
+          }
+        },
+        {
+          "field": "transaction_amount",
+          "type": "float",
+          "schema": {
+            "name": "transaction_amount",
+            "data_type": "float",
+            "default_value": null,
+            "max_length": null,
+            "numeric_precision": null,
+            "numeric_scale": null,
+            "is_generated": false,
+            "generation_expression": null,
+            "is_nullable": true,
+            "is_unique": false,
+            "is_indexed": false,
+            "is_primary_key": false,
+            "has_auto_increment": false,
+            "foreign_key_column": null,
+            "foreign_key_table": null
+          },
+          "meta": {
+            "field": "transaction_amount",
+            "special": null,
+            "interface": "input",
+            "options": {
+              "step": 100
+            },
+            "display": null,
+            "display_options": null,
+            "readonly": false,
+            "hidden": false,
+            "sort": 8,
+            "width": "full",
+            "translations": [
+              {
+                "language": "en-US",
+                "translation": "Transaction Amount"
+              },
+              {
+                "language": "ru-RU",
+                "translation": "Сумма Транзакции"
+              }
+            ],
+            "note": null,
+            "conditions": null,
+            "required": false,
+            "group": null,
+            "validation": null,
+            "validation_message": null
+          }
+        },
+        {
+          "field": "tags",
+          "type": "json",
+          "schema": {
+            "name": "tags",
+            "data_type": "json",
+            "default_value": null,
+            "max_length": null,
+            "numeric_precision": null,
+            "numeric_scale": null,
+            "is_generated": false,
+            "generation_expression": null,
+            "is_nullable": true,
+            "is_unique": false,
+            "is_indexed": false,
+            "is_primary_key": false,
+            "has_auto_increment": false,
+            "foreign_key_column": null,
+            "foreign_key_table": null
+          },
+          "meta": {
+            "field": "tags",
+            "special": ["cast-json"],
+            "interface": "tags",
+            "options": null,
+            "display": null,
+            "display_options": null,
+            "readonly": false,
+            "hidden": false,
+            "sort": 16,
+            "width": "full",
+            "translations": [
+              {
+                "language": "en-US",
+                "translation": "Tags"
+              },
+              {
+                "language": "ru-RU",
+                "translation": "Теги"
+              }
+            ],
+            "note": null,
+            "conditions": null,
+            "required": false,
+            "group": null,
+            "validation": null,
+            "validation_message": null
+          }
+        },
+        {
+          "field": "tasks",
+          "type": "alias",
+          "schema": null,
+          "meta": {
+            "field": "tasks",
+            "special": ["m2m"],
+            "interface": "list-m2m",
+            "options": null,
+            "display": null,
+            "display_options": null,
+            "readonly": false,
+            "hidden": false,
+            "sort": 14,
+            "width": "full",
+            "translations": [
+              {
+                "language": "en-US",
+                "translation": "Tasks"
+              },
+              {
+                "language": "ru-RU",
+                "translation": "Задачи"
+              }
+            ],
+            "note": null,
+            "conditions": null,
+            "required": false,
+            "group": null,
+            "validation": null,
+            "validation_message": null
+          }
+        },
+        {
+          "field": "files",
+          "type": "alias",
+          "schema": null,
+          "meta": {
+            "field": "files",
+            "special": ["files"],
+            "interface": "files",
+            "options": {
+              "folder": "bc7ea55a-d5d5-447e-9a36-b60a3af9ac6d"
+            },
+            "display": null,
+            "display_options": null,
+            "readonly": false,
+            "hidden": false,
+            "sort": 13,
+            "width": "full",
+            "translations": [
+              {
+                "language": "en-US",
+                "translation": "Files"
+              },
+              {
+                "language": "ru-RU",
+                "translation": "Файлы"
+              }
+            ],
+            "note": null,
+            "conditions": null,
+            "required": false,
+            "group": null,
+            "validation": null,
+            "validation_message": null
+          }
+        },
+        {
+          "field": "executors",
+          "type": "alias",
+          "schema": null,
+          "meta": {
+            "field": "executors",
+            "special": ["m2m"],
+            "interface": "list-m2m",
+            "options": {
+              "filter": {
+                "_and": [
+                  {
+                    "role": {
+                      "name": {
+                        "_contains": "CoreTeam"
+                      }
+                    }
+                  }
+                ]
+              }
+            },
+            "display": null,
+            "display_options": null,
+            "readonly": false,
+            "hidden": false,
+            "sort": 11,
+            "width": "full",
+            "translations": [
+              {
+                "language": "en-US",
+                "translation": "Executors"
+              },
+              {
+                "language": "ru-RU",
+                "translation": "Исполнители"
+              }
+            ],
+            "note": null,
+            "conditions": null,
+            "required": false,
+            "group": null,
+            "validation": null,
+            "validation_message": null
+          }
+        },
+        {
+          "field": "contacts",
+          "type": "alias",
+          "schema": null,
+          "meta": {
+            "field": "contacts",
+            "special": ["m2m"],
+            "interface": "list-m2m",
+            "options": null,
+            "display": null,
+            "display_options": null,
+            "readonly": false,
+            "hidden": false,
+            "sort": 10,
+            "width": "full",
+            "translations": [
+              {
+                "language": "en-US",
+                "translation": "Contacts"
+              },
+              {
+                "language": "ru-RU",
+                "translation": "Контакты"
+              }
+            ],
+            "note": null,
+            "conditions": null,
+            "required": false,
+            "group": null,
+            "validation": null,
+            "validation_message": null
+          }
+        }
+      ]
+    },
+
+    "relations": [
+      {
+        "collection": null,
+        "field": "deal",
+        "related_collection": "deals",
+        "schema": {
+          "table": null,
+          "column": "deal",
+          "foreign_key_table": "deals",
+          "foreign_key_column": "id",
+          "on_update": "NO ACTION",
+          "on_delete": "SET NULL",
+          "constraint_name": null
+        },
+        "meta": {
+          "many_collection": null,
+          "many_field": "deal",
+          "one_collection": "deals",
+          "one_field": null,
+          "one_collection_field": null,
+          "one_allowed_collections": null,
+          "junction_field": null,
+          "sort_field": null,
+          "one_deselect_action": "nullify"
+        }
+      },
+
+      {
+        "collection": null,
+        "field": "created_by",
+        "related_collection": "directus_users",
+        "schema": {
+          "table": null,
+          "column": "created_by",
+          "foreign_key_table": "directus_users",
+          "foreign_key_column": "id",
+          "on_update": "NO ACTION",
+          "on_delete": "NO ACTION",
+          "constraint_name": null
+        },
+        "meta": {
+          "many_collection": null,
+          "many_field": "created_by",
+          "one_collection": "directus_users",
+          "one_field": null,
+          "one_collection_field": null,
+          "one_allowed_collections": null,
+          "junction_field": null,
+          "sort_field": null,
+          "one_deselect_action": "nullify"
+        }
+      },
+
+      {
+        "collection": null,
+        "field": "updated_by",
+        "related_collection": "directus_users",
+        "schema": {
+          "table": null,
+          "column": "updated_by",
+          "foreign_key_table": "directus_users",
+          "foreign_key_column": "id",
+          "on_update": "NO ACTION",
+          "on_delete": "NO ACTION",
+          "constraint_name": null
+        },
+        "meta": {
+          "many_collection": null,
+          "many_field": "updated_by",
+          "one_collection": "directus_users",
+          "one_field": null,
+          "one_collection_field": null,
+          "one_allowed_collections": null,
+          "junction_field": null,
+          "sort_field": null,
+          "one_deselect_action": "nullify"
+        }
+      }
+    ]
+  },
+  "executors": {
+    "table": {
+      "collection": null,
+      "meta": {
+        "collection": null,
+        "icon": "assignment",
+        "note": null,
+        "display_template": "{{ header }}",
+        "hidden": true,
+        "singleton": false,
+        "translations": [
+          {
+            "language": "en-US",
+            "translation": "Executors"
+          },
+          {
+            "language": "ru-RU",
+            "translation": "Исполнители"
+          }
+        ],
+        "archive_field": null,
+        "archive_value": null,
+        "unarchive_value": null,
+        "archive_app_filter": true,
+        "sort_field": null,
+        "item_duplication_fields": null,
+        "sort": 1,
+        "accountability": "all",
+        "group": null,
+        "collapse": "open",
+        "preview_url": null,
+        "versioning": false
+      },
+      "schema": {
+        "name": null,
+        "comment": null
+      },
+      "fields": [
+        {
+          "field": "id",
+          "type": "integer",
+          "schema": {
+            "data_type": "integer",
+            "default_value": null,
+            "max_length": null,
+            "numeric_precision": null,
+            "numeric_scale": null,
+            "is_generated": false,
+            "generation_expression": null,
+            "is_nullable": false,
+            "is_unique": false,
+            "is_indexed": false,
+            "is_primary_key": true,
+            "has_auto_increment": true,
+            "foreign_key_column": null,
+            "foreign_key_table": null
+          },
+          "meta": {
+            "field": "id",
+            "special": null,
+            "interface": null,
+            "options": null,
+            "display": null,
+            "display_options": null,
+            "readonly": false,
+            "hidden": true,
+            "sort": 1,
+            "width": "full",
+            "translations": [
+              {
+                "language": "en-US",
+                "translation": "ID"
+              },
+              {
+                "language": "ru-RU",
+                "translation": "ID"
+              }
+            ],
+            "note": null,
+            "conditions": null,
+            "required": false,
+            "group": null,
+            "validation": null,
+            "validation_message": null
+          }
+        },
+        {
+          "field": "projects_id",
+          "type": "string",
+          "schema": {
+            "data_type": "char",
+            "default_value": null,
+            "max_length": 36,
+            "numeric_precision": null,
+            "numeric_scale": null,
+            "is_generated": false,
+            "generation_expression": null,
+            "is_nullable": true,
+            "is_unique": false,
+            "is_indexed": false,
+            "is_primary_key": false,
+            "has_auto_increment": false,
+            "foreign_key_column": "id",
+            "foreign_key_table": "projects"
+          },
+          "meta": {
+            "field": "projects_id",
+            "special": null,
+            "interface": null,
+            "options": null,
+            "display": null,
+            "display_options": null,
+            "readonly": false,
+            "hidden": true,
+            "sort": 2,
+            "width": "full",
+            "translations": [
+              {
+                "language": "en-US",
+                "translation": "Projects ID"
+              },
+              {
+                "language": "ru-RU",
+                "translation": "ID проекта"
+              }
+            ],
+            "note": null,
+            "conditions": null,
+            "required": false,
+            "group": null,
+            "validation": null,
+            "validation_message": null
+          }
+        },
+        {
+          "field": "directus_users_id",
+          "type": "string",
+          "schema": {
+            "data_type": "char",
+            "default_value": null,
+            "max_length": 36,
+            "numeric_precision": null,
+            "numeric_scale": null,
+            "is_generated": false,
+            "generation_expression": null,
+            "is_nullable": true,
+            "is_unique": false,
+            "is_indexed": false,
+            "is_primary_key": false,
+            "has_auto_increment": false,
+            "foreign_key_column": "id",
+            "foreign_key_table": "directus_users"
+          },
+          "meta": {
+            "field": "directus_users_id",
+            "special": null,
+            "interface": null,
+            "options": null,
+            "display": null,
+            "display_options": null,
+            "readonly": false,
+            "hidden": true,
+            "sort": 3,
+            "width": "full",
+            "translations": [
+              {
+                "language": "en-US",
+                "translation": "Directus Users ID"
+              },
+              {
+                "language": "ru-RU",
+                "translation": "ID пользователя"
+              }
+            ],
+            "note": null,
+            "conditions": null,
+            "required": false,
+            "group": null,
+            "validation": null,
+            "validation_message": null
+          }
+        }
+      ]
+    },
+    "relations": [
+      {
+        "collection": null,
+        "field": "projects_id",
+        "related_collection": null,
+        "schema": {
+          "table": null,
+          "column": "projects_id",
+          "foreign_key_table": null,
+          "foreign_key_column": "id",
+          "on_update": "NO ACTION",
+          "on_delete": "SET NULL",
+          "constraint_name": null
+        },
+        "meta": {
+          "many_collection": null,
+          "many_field": "projects_id",
+          "one_collection": null,
+          "one_field": "executors",
+          "one_collection_field": null,
+          "one_allowed_collections": null,
+          "junction_field": "directus_users_id",
+          "sort_field": null,
+          "one_deselect_action": "nullify"
+        }
+      },
+      {
+        "collection": null,
+        "field": "directus_users_id",
+        "related_collection": "directus_users",
+        "schema": {
+          "table": null,
+          "column": "directus_users_id",
+          "foreign_key_table": "directus_users",
+          "foreign_key_column": "id",
+          "on_update": "NO ACTION",
+          "on_delete": "SET NULL",
+          "constraint_name": null
+        },
+        "meta": {
+          "many_collection": null,
+          "many_field": "directus_users_id",
+          "one_collection": "directus_users",
+          "one_field": null,
+          "one_collection_field": null,
+          "one_allowed_collections": null,
+          "junction_field": "projects_id",
+          "sort_field": null,
+          "one_deselect_action": "nullify"
+        }
+      }
+    ]
+  },
+  "contacts": {
+    "table": {
+      "collection": null,
+      "schema": {
+        "name": null,
+        "comment": null
+      },
+      "meta": {
+        "collection": null,
+        "icon": "import_export",
+        "note": null,
+        "display_template": null,
+        "hidden": true,
+        "singleton": false,
+        "translations": [
+          {
+            "language": "en-US",
+            "translation": "Contacts"
+          },
+          {
+            "language": "ru-RU",
+            "translation": "Контакты"
+          }
+        ],
+        "archive_field": null,
+        "archive_app_filter": true,
+        "archive_value": null,
+        "unarchive_value": null,
+        "sort_field": null,
+        "accountability": "all",
+        "color": null,
+        "item_duplication_fields": null,
+        "sort": 4,
+        "group": null,
+        "collapse": "open",
+        "preview_url": null,
+        "versioning": false
+      },
+      "fields": [
+        {
+          "field": "id",
+          "type": "integer",
+          "schema": {
+            "name": "id",
+            "data_type": "integer",
+            "default_value": null,
+            "max_length": null,
+            "numeric_precision": null,
+            "numeric_scale": null,
+            "is_generated": false,
+            "generation_expression": null,
+            "is_nullable": false,
+            "is_unique": false,
+            "is_indexed": false,
+            "is_primary_key": true,
+            "has_auto_increment": true,
+            "foreign_key_column": null,
+            "foreign_key_table": null
+          },
+          "meta": {
+            "field": "id",
+            "special": null,
+            "interface": null,
+            "options": null,
+            "display": null,
+            "display_options": null,
+            "readonly": false,
+            "hidden": true,
+            "sort": 1,
+            "width": "full",
+            "translations": [
+              {
+                "language": "en-US",
+                "translation": "ID"
+              },
+              {
+                "language": "ru-RU",
+                "translation": "ID"
+              }
+            ],
+            "note": null,
+            "conditions": null,
+            "required": false,
+            "group": null,
+            "validation": null,
+            "validation_message": null
+          }
+        },
+        {
+          "field": "projects_id",
+          "type": "string",
+          "schema": {
+            "name": "projects_id",
+            "data_type": "char",
+            "default_value": null,
+            "max_length": 36,
+            "numeric_precision": null,
+            "numeric_scale": null,
+            "is_generated": false,
+            "generation_expression": null,
+            "is_nullable": true,
+            "is_unique": false,
+            "is_indexed": false,
+            "is_primary_key": false,
+            "has_auto_increment": false,
+            "foreign_key_column": "id",
+            "foreign_key_table": "projects"
+          },
+          "meta": {
+            "field": "projects_id",
+            "special": null,
+            "interface": null,
+            "options": null,
+            "display": null,
+            "display_options": null,
+            "readonly": false,
+            "hidden": true,
+            "sort": 2,
+            "width": "full",
+            "translations": [
+              {
+                "language": "en-US",
+                "translation": "Projects ID"
+              },
+              {
+                "language": "ru-RU",
+                "translation": "ID проекта"
+              }
+            ],
+            "note": null,
+            "conditions": null,
+            "required": false,
+            "group": null,
+            "validation": null,
+            "validation_message": null
+          }
+        },
+        {
+          "field": "contacts_id",
+          "type": "string",
+          "schema": {
+            "name": "contacts_id",
+            "data_type": "char",
+            "default_value": null,
+            "max_length": 36,
+            "numeric_precision": null,
+            "numeric_scale": null,
+            "is_generated": false,
+            "generation_expression": null,
+            "is_nullable": true,
+            "is_unique": false,
+            "is_indexed": false,
+            "is_primary_key": false,
+            "has_auto_increment": false,
+            "foreign_key_column": "id",
+            "foreign_key_table": "contacts"
+          },
+          "meta": {
+            "field": "contacts_id",
+            "special": null,
+            "interface": null,
+            "options": null,
+            "display": null,
+            "display_options": null,
+            "readonly": false,
+            "hidden": true,
+            "sort": 3,
+            "width": "full",
+            "translations": [
+              {
+                "language": "en-US",
+                "translation": "Contacts ID"
+              },
+              {
+                "language": "ru-RU",
+                "translation": "ID контакта"
+              }
+            ],
+            "note": null,
+            "conditions": null,
+            "required": false,
+            "group": null,
+            "validation": null,
+            "validation_message": null
+          }
+        }
+      ]
+    },
+    "relations": [
+      {
+        "collection": null,
+        "field": "projects_id",
+        "related_collection": null,
+        "schema": {
+          "table": null,
+          "column": "projects_id",
+          "foreign_key_table": null,
+          "foreign_key_column": "id",
+          "on_update": "NO ACTION",
+          "on_delete": "SET NULL",
+          "constraint_name": null
+        },
+        "meta": {
+          "many_collection": null,
+          "many_field": "projects_id",
+          "one_collection": null,
+          "one_field": "contacts",
+          "one_collection_field": null,
+          "one_allowed_collections": null,
+          "junction_field": "contacts_id",
+          "sort_field": null,
+          "one_deselect_action": "nullify"
+        }
+      },
+      {
+        "collection": null,
+        "field": "contacts_id",
+        "related_collection": "contacts",
+        "schema": {
+          "table": null,
+          "column": "contacts_id",
+          "foreign_key_table": "contacts",
+          "foreign_key_column": "id",
+          "on_update": "NO ACTION",
+          "on_delete": "SET NULL",
+          "constraint_name": null
+        },
+        "meta": {
+          "many_collection": null,
+          "many_field": "contacts_id",
+          "one_collection": "contacts",
+          "one_field": null,
+          "one_collection_field": null,
+          "one_allowed_collections": null,
+          "junction_field": "projects_id",
+          "sort_field": null,
+          "one_deselect_action": "nullify"
+        }
+      }
+    ]
+  },
+  "tasks": {
+    "table": {
+      "collection": null,
+      "meta": {
+        "collection": null,
+        "icon": "import_export",
+        "note": null,
+        "display_template": null,
+        "hidden": true,
+        "singleton": false,
+        "translations": [
+          {
+            "language": "en-US",
+            "translation": "Tasks"
+          },
+          {
+            "language": "ru-RU",
+            "translation": "Задачи"
+          }
+        ],
+        "archive_field": null,
+        "archive_app_filter": true,
+        "archive_value": null,
+        "unarchive_value": null,
+        "sort_field": null,
+        "accountability": "all",
+        "color": null,
+        "item_duplication_fields": null,
+        "sort": 5,
+        "group": "projects",
+        "collapse": "open",
+        "preview_url": null,
+        "versioning": false
+      },
+      "schema": {
+        "name": null,
+        "comment": null
+      },
+      "fields": [
+        {
+          "field": "id",
+          "type": "integer",
+          "schema": {
+            "name": "id",
+            "data_type": "integer",
+            "default_value": null,
+            "max_length": null,
+            "numeric_precision": null,
+            "numeric_scale": null,
+            "is_generated": false,
+            "generation_expression": null,
+            "is_nullable": false,
+            "is_unique": false,
+            "is_indexed": false,
+            "is_primary_key": true,
+            "has_auto_increment": true,
+            "foreign_key_column": null,
+            "foreign_key_table": null
+          },
+          "meta": {
+            "field": "id",
+            "special": null,
+            "interface": null,
+            "options": null,
+            "display": null,
+            "display_options": null,
+            "readonly": false,
+            "hidden": true,
+            "sort": 1,
+            "width": "full",
+            "translations": [
+              {
+                "language": "en-US",
+                "translation": "ID"
+              },
+              {
+                "language": "ru-RU",
+                "translation": "ID"
+              }
+            ],
+            "note": null,
+            "conditions": null,
+            "required": false,
+            "group": null,
+            "validation": null,
+            "validation_message": null
+          }
+        },
+        {
+          "field": "projects_id",
+          "type": "string",
+          "schema": {
+            "name": "projects_id",
+            "data_type": "char",
+            "default_value": null,
+            "max_length": 36,
+            "numeric_precision": null,
+            "numeric_scale": null,
+            "is_generated": false,
+            "generation_expression": null,
+            "is_nullable": true,
+            "is_unique": false,
+            "is_indexed": false,
+            "is_primary_key": false,
+            "has_auto_increment": false,
+            "foreign_key_column": "id",
+            "foreign_key_table": "projects"
+          },
+          "meta": {
+            "field": "projects_id",
+            "special": null,
+            "interface": null,
+            "options": null,
+            "display": null,
+            "display_options": null,
+            "readonly": false,
+            "hidden": true,
+            "sort": 2,
+            "width": "full",
+            "translations": [
+              {
+                "language": "en-US",
+                "translation": "Projects ID"
+              },
+              {
+                "language": "ru-RU",
+                "translation": "ID проекта"
+              }
+            ],
+            "note": null,
+            "conditions": null,
+            "required": false,
+            "group": null,
+            "validation": null,
+            "validation_message": null
+          }
+        },
+        {
+          "field": "tasks_id",
+          "type": "integer",
+          "schema": {
+            "name": "tasks_id",
+            "data_type": "integer",
+            "default_value": null,
+            "max_length": null,
+            "numeric_precision": null,
+            "numeric_scale": null,
+            "is_generated": false,
+            "generation_expression": null,
+            "is_nullable": true,
+            "is_unique": false,
+            "is_indexed": false,
+            "is_primary_key": false,
+            "has_auto_increment": false,
+            "foreign_key_column": "id",
+            "foreign_key_table": "milestones"
+          },
+          "meta": {
+            "field": "tasks_id",
+            "special": null,
+            "interface": null,
+            "options": null,
+            "display": null,
+            "display_options": null,
+            "readonly": false,
+            "hidden": true,
+            "sort": 3,
+            "width": "full",
+            "translations": [
+              {
+                "language": "en-US",
+                "translation": "Tasks ID"
+              },
+              {
+                "language": "ru-RU",
+                "translation": "ID задачи"
+              }
+            ],
+            "note": null,
+            "conditions": null,
+            "required": false,
+            "group": null,
+            "validation": null,
+            "validation_message": null
+          }
+        }
+      ]
+    },
+    "relations": [
+      {
+        "collection": null,
+        "field": "projects_id",
+        "related_collection": null,
+        "schema": {
+          "table": null,
+          "column": "projects_id",
+          "foreign_key_table": null,
+          "foreign_key_column": "id",
+          "on_update": "NO ACTION",
+          "on_delete": "SET NULL",
+          "constraint_name": null
+        },
+        "meta": {
+          "many_collection": null,
+          "many_field": "projects_id",
+          "one_collection": null,
+          "one_field": "tasks",
+          "one_collection_field": null,
+          "one_allowed_collections": null,
+          "junction_field": "tasks_id",
+          "sort_field": null,
+          "one_deselect_action": "nullify"
+        }
+      },
+      {
+        "collection": null,
+        "field": "tasks_id",
+        "related_collection": "milestones",
+        "schema": {
+          "table": null,
+          "column": "tasks_id",
+          "foreign_key_table": "milestones",
+          "foreign_key_column": "id",
+          "on_update": "NO ACTION",
+          "on_delete": "SET NULL",
+          "constraint_name": null
+        },
+        "meta": {
+          "many_collection": null,
+          "many_field": "tasks_id",
+          "one_collection": "milestones",
+          "one_field": null,
+          "one_collection_field": null,
+          "one_allowed_collections": null,
+          "junction_field": "projects_id",
+          "sort_field": null,
+          "one_deselect_action": "nullify"
+        }
+      }
+    ]
+  },
+  "files": {
+    "table": {
+      "collection": null,
+      "meta": {
+        "collection": null,
+        "icon": "import_export",
+        "note": null,
+        "display_template": null,
+        "hidden": true,
+        "singleton": false,
+        "translations": [
+          {
+            "language": "en-US",
+            "translation": "Files"
+          },
+          {
+            "language": "ru-RU",
+            "translation": "Файлы"
+          }
+        ],
+        "archive_field": null,
+        "archive_app_filter": true,
+        "archive_value": null,
+        "unarchive_value": null,
+        "sort_field": null,
+        "accountability": "all",
+        "color": null,
+        "item_duplication_fields": null,
+        "sort": 2,
+        "group": null,
+        "collapse": "open",
+        "preview_url": null,
+        "versioning": false
+      },
+      "schema": {
+        "name": null,
+        "description": null
+      },
+      "fields": [
+        {
+          "field": "id",
+          "type": "integer",
+          "schema": {
+            "name": "id",
+            "data_type": "integer",
+            "default_value": null,
+            "max_length": null,
+            "numeric_precision": null,
+            "numeric_scale": null,
+            "is_generated": false,
+            "generation_expression": null,
+            "is_nullable": false,
+            "is_unique": false,
+            "is_indexed": false,
+            "is_primary_key": true,
+            "has_auto_increment": true,
+            "foreign_key_column": null,
+            "foreign_key_table": null
+          },
+          "meta": {
+            "field": "id",
+            "special": null,
+            "interface": null,
+            "options": null,
+            "display": null,
+            "display_options": null,
+            "readonly": false,
+            "hidden": true,
+            "sort": 1,
+            "width": "full",
+            "translations": [
+              {
+                "language": "en-US",
+                "translation": "ID"
+              },
+              {
+                "language": "ru-RU",
+                "translation": "ID"
+              }
+            ],
+            "note": null,
+            "conditions": null,
+            "required": false,
+            "group": null,
+            "validation": null,
+            "validation_message": null
+          }
+        },
+        {
+          "field": "projects_id",
+          "type": "string",
+          "schema": {
+            "name": "projects_id",
+            "data_type": "char",
+            "default_value": null,
+            "max_length": 36,
+            "numeric_precision": null,
+            "numeric_scale": null,
+            "is_generated": false,
+            "generation_expression": null,
+            "is_nullable": true,
+            "is_unique": false,
+            "is_indexed": false,
+            "is_primary_key": false,
+            "has_auto_increment": false,
+            "foreign_key_column": "id",
+            "foreign_key_table": "projects"
+          },
+          "meta": {
+            "field": "projects_id",
+            "special": null,
+            "interface": null,
+            "options": null,
+            "display": null,
+            "display_options": null,
+            "readonly": false,
+            "hidden": true,
+            "sort": 2,
+            "width": "full",
+            "translations": [
+              {
+                "language": "en-US",
+                "translation": "Projects ID"
+              },
+              {
+                "language": "ru-RU",
+                "translation": "ID проекта"
+              }
+            ],
+            "note": null,
+            "conditions": null,
+            "required": false,
+            "group": null,
+            "validation": null,
+            "validation_message": null
+          }
+        },
+        {
+          "field": "directus_files_id",
+          "type": "string",
+          "schema": {
+            "name": "directus_files_id",
+            "data_type": "char",
+            "default_value": null,
+            "max_length": 36,
+            "numeric_precision": null,
+            "numeric_scale": null,
+            "is_generated": false,
+            "generation_expression": null,
+            "is_nullable": true,
+            "is_unique": false,
+            "is_indexed": false,
+            "is_primary_key": false,
+            "has_auto_increment": false,
+            "foreign_key_column": "id",
+            "foreign_key_table": "directus_files"
+          },
+          "meta": {
+            "field": "directus_files_id",
+            "special": null,
+            "interface": null,
+            "options": null,
+            "display": null,
+            "display_options": null,
+            "readonly": false,
+            "hidden": true,
+            "sort": 3,
+            "width": "full",
+            "translations": [
+              {
+                "language": "en-US",
+                "translation": "Files ID"
+              },
+              {
+                "language": "ru-RU",
+                "translation": "ID файлов"
+              }
+            ],
+            "note": null,
+            "conditions": null,
+            "required": false,
+            "group": null,
+            "validation": null,
+            "validation_message": null
+          }
+        }
+      ]
+    },
+    "relations": [
+      {
+        "collection": null,
+        "field": "projects_id",
+        "related_collection": null,
+        "schema": {
+          "table": null,
+          "column": "projects_id",
+          "foreign_key_table": null,
+          "foreign_key_column": "id",
+          "on_update": "NO ACTION",
+          "on_delete": "SET NULL",
+          "constraint_name": null
+        },
+        "meta": {
+          "many_collection": null,
+          "many_field": "projects_id",
+          "one_collection": null,
+          "one_field": "files",
+          "one_collection_field": null,
+          "one_allowed_collections": null,
+          "junction_field": "directus_files_id",
+          "sort_field": null,
+          "one_deselect_action": "nullify"
+        }
+      },
+      {
+        "collection": null,
+        "field": "directus_files_id",
+        "related_collection": "directus_files",
+        "schema": {
+          "table": null,
+          "column": "directus_files_id",
+          "foreign_key_table": "directus_files",
+          "foreign_key_column": "id",
+          "on_update": "NO ACTION",
+          "on_delete": "SET NULL",
+          "constraint_name": null
+        },
+        "meta": {
+          "many_collection": null,
+          "many_field": "directus_files_id",
+          "one_collection": "directus_files",
+          "one_field": null,
+          "one_collection_field": null,
+          "one_allowed_collections": null,
+          "junction_field": "projects_id",
+          "sort_field": null,
+          "one_deselect_action": "nullify"
+        }
+      }
+    ]
+  }
+}
