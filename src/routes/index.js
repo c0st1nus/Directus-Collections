@@ -1,7 +1,22 @@
 import express from 'express';
 import { createDirectus, staticToken, rest, createCollection, readCollections, createRelation, readItem } from '@directus/sdk';
 import fs from 'fs';
+import winston from 'winston';
 import path from 'path';
+
+const logger = winston.createLogger({
+    level: 'info',
+    format: winston.format.combine(
+      winston.format.timestamp(),
+      winston.format.printf(({ timestamp, level, message }) => {
+        return `${timestamp} [${level.toUpperCase()}]: ${message}`;
+      })
+    ),
+    transports: [
+      new winston.transports.Console(),
+      new winston.transports.File({ filename: 'logs/app.log' })
+    ]
+  });
 
 const router = express.Router();
 
@@ -9,9 +24,9 @@ const router = express.Router();
 const writeErrorToFile = (error) => {
     fs.writeFile('error.json', JSON.stringify(error), (err) => {
         if (err) {
-            console.error('Error writing to error file:', err);
+            logger.error('Error writing to error file:', err);
         } else {
-            console.log('Error written to error.json');
+            logger.info('Error written to error.json');
         }
     });
 };
@@ -22,7 +37,7 @@ async function safeApiRequest(apiCall, errorMessage) {
         return await apiCall();
     } catch (error) {
         writeErrorToFile(error);
-        console.error(errorMessage, error.message);
+        logger.error(errorMessage, error.message);
         throw error; // Propagate error for caller to handle
     }
 }
@@ -38,7 +53,7 @@ async function createTableCollection(collectionData, name, groupName = null) {
     }
     
     await safeApiRequest(
-        () => client.request(createCollection(collectionData)),
+        async () => await client.request(createCollection(collectionData)),
         `Error creating collection ${name}:`
     );
 }
@@ -56,7 +71,7 @@ async function createTableRelation(relationData, collectionName, relatedCollecti
     }
     
     await safeApiRequest(
-        () => client.request(createRelation(relationData)),
+        async () => await client.request(createRelation(relationData)),
         `Error creating relation for ${relationData.field}:`
     );
 }
@@ -74,7 +89,7 @@ async function main_table(name, fields, header) {
             await createTableRelation(relation, name);
         }
     } catch (error) {
-        console.error('Failed to create main table:', error.message);
+        logger.error('Failed to create main table:', error.message);
     }
 }
 
@@ -99,7 +114,7 @@ async function createJunctionTable(fields, mainName, tableType) {
             tableName
         );
     } catch (error) {
-        console.error(`Failed to create ${tableType} table:`, error.message);
+        logger.error(`Failed to create ${tableType} table:`, error.message);
     }
 }
 
@@ -121,7 +136,7 @@ async function files_table(fields, mainName) {
 }
 
 // Initialize the Directus client
-const client = createDirectus('http://directus')
+const client = createDirectus('http://directus:8055')
     .with(staticToken('3ZIXPuKw0aD9KzWtVv0Gn3KGyLsbQr9K'))
     .with(rest());
 
@@ -138,7 +153,7 @@ router.post('/new_collection', express.json(), async (req, res) => {
         const header = _name.header;
         const fields = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'table.json')));
         
-        console.log(`Creating tables for ${name}...`);
+        logger.info(`Creating tables for ${name}...`);
         
         await main_table(name, fields, header);
         await executors_table(fields, name);
@@ -146,7 +161,7 @@ router.post('/new_collection', express.json(), async (req, res) => {
         await tasks_table(fields, name);
         await files_table(fields, name);
         
-        console.log(`Successfully created all tables for ${name}`);
+        logger.info(`Successfully created all tables for ${name}`);
         
         res.status(200).json({ 
             success: true, 
@@ -160,7 +175,8 @@ router.post('/new_collection', express.json(), async (req, res) => {
             ]
         });
     } catch (error) {
-        console.error('Failed to create tables:', error.message);
+        writeErrorToFile(error);
+        logger.error('Failed to create tables:', error.message);
         res.status(500).json({ 
             error: 'Failed to create collections', 
             message: error.message 

@@ -4,12 +4,13 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "node dist/app.js",
+    "start": "node src/app.js",
     "create-tables": "node dist/table-create.js"
   },
   "dependencies": {
     "@directus/sdk": "19.0.1",
-    "express": "5.0.1"
+    "express": "5.0.1",
+    "winston": "^3.17.0"
   },
   "devDependencies": {
     "@types/express": "5.0.1",
